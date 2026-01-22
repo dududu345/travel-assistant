@@ -30,6 +30,7 @@ export default async function handler(req: any, res: any) {
 
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
+    console.error("Missing GEMINI_API_KEY");
     res.status(500).json({ error: "Missing GEMINI_API_KEY" });
     return;
   }
@@ -92,6 +93,11 @@ ${standardTable || "未上传数据。"}
       text: response.text || "查询超时或无结果，请检查表格数据是否包含该关键词。"
     });
   } catch (error: any) {
+    console.error("Gemini request failed", {
+      message: error?.message,
+      status: error?.status,
+      name: error?.name
+    });
     res.status(500).json({ error: error?.message || "Request failed" });
   }
 }
