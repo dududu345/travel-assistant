@@ -1,6 +1,6 @@
 import { GoogleGenAI } from "@google/genai";
 
-const MODEL_NAME = "gemini-2.0-flash";
+const MODEL_NAME = "gemini-2.5-flash";
 const SYSTEM_INSTRUCTION = `你是一位专业的差旅费报销审核官，具备极强的数据比对能力。
 你的回复必须基于“双表联查”的结果。
 
